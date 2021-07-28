@@ -1,0 +1,473 @@
+-- create points
+!create point_a : Point2D
+!create point_b : Point2D
+!create point_c : Point2D
+!create point_d : Point2D
+!create point_e : Point2D
+!create point_f : Point2D
+!create point_g : Point2D 
+!create point_h : Point2D 
+!create point_i : Point2D 
+!create point_j : Point2D 
+!create point_k : Point2D 
+!create point_l : Point2D 
+!create point_m : Point2D 
+!create point_n : Point2D 
+!create point_o : Point2D 
+!create point_p : Point2D 
+!create point_q : Point2D 
+!create point_r : Point2D 
+!create point_s : Point2D
+!create point_t : Point2D
+!create point_u : Point2D 
+!create point_v : Point2D 
+!create point_w : Point2D
+!create point_x : Point2D 
+
+!set point_a.x := 10.59
+!set point_a.y := 2.35
+!set point_b.x := 8.29
+!set point_b.y := 7.57
+!set point_c.x := 14.94
+!set point_c.y := 7.59
+!set point_d.x := 14.13
+!set point_d.y := 11.5
+!set point_e.x := 20.33
+!set point_e.y := 13.75
+!set point_f.x := 17.48
+!set point_f.y := 7.02
+!set point_g.x := 21.96
+!set point_g.y := 4.42
+!set point_h.x := 4.58
+!set point_h.y := 11.85
+!set point_i.x := 13.36
+!set point_i.y := 17.08
+!set point_j.x := 14.98
+!set point_j.y := 15.57
+!set point_k.x := 12.29
+!set point_k.y := 13.56
+!set point_l.x := 18.02
+!set point_l.y := 16.21
+!set point_m.x := 19.39
+!set point_m.y := 14.74
+!set point_n.x := 22.87
+!set point_n.y := 16.51
+!set point_o.x := 24.94
+!set point_o.y := 15.47
+!set point_p.x := 28.3
+!set point_p.y := 17.86
+!set point_q.x := 29.9
+!set point_q.y := 14.5
+!set point_r.x := 27.72
+!set point_r.y := 13.39
+!set point_s.x := 30.4
+!set point_s.y := 10.45
+!set point_t.x := 22.57
+!set point_t.y := 7.34
+!set point_u.x := 20.66
+!set point_u.y := 5.24
+!set point_v.x := 32.18
+!set point_v.y := 8.42
+!set point_w.x := 33.49
+!set point_w.y := 14
+!set point_x.x := 30.71
+!set point_x.y := 19.84
+
+
+-- create vertices
+!create vertex_a : Vertex
+!create vertex_b : Vertex
+!create vertex_c : Vertex
+!create vertex_d : Vertex
+!create vertex_e : Vertex
+!create vertex_f : Vertex
+!create vertex_g : Vertex
+!create vertex_h : Vertex
+!create vertex_i : Vertex
+!create vertex_j : Vertex
+!create vertex_k : Vertex
+!create vertex_l : Vertex
+!create vertex_m : Vertex
+!create vertex_n : Vertex
+!create vertex_o : Vertex
+!create vertex_p : Vertex
+!create vertex_q : Vertex
+!create vertex_r : Vertex
+!create vertex_s : Vertex
+!create vertex_t : Vertex
+!create vertex_u : Vertex
+!create vertex_v : Vertex
+!create vertex_w : Vertex
+!create vertex_x : Vertex
+
+!set vertex_a.height := 5.28
+!set vertex_b.height := 4.26
+!set vertex_c.height := 3.88
+!set vertex_d.height := 1.28
+!set vertex_e.height := -1.23
+!set vertex_f.height := 1.87
+!set vertex_g.height := 1.63
+!set vertex_h.height := 4.58
+!set vertex_i.height := 2.1
+!set vertex_j.height := 3.48
+!set vertex_k.height := 2.78
+!set vertex_l.height := 0
+!set vertex_m.height := 2.06
+!set vertex_n.height := 1.42
+!set vertex_o.height := 2.8
+!set vertex_p.height := 0.54
+!set vertex_q.height := 1.7
+!set vertex_r.height := 1.2
+!set vertex_s.height := -0.37
+!set vertex_t.height := -1.7
+!set vertex_u.height := -3.26
+!set vertex_v.height := -4.27
+!set vertex_w.height := -7.36
+!set vertex_x.height := -5.7
+
+!insert (vertex_a, point_a) into Vertex_Point2D
+!insert (vertex_b, point_b) into Vertex_Point2D
+!insert (vertex_c, point_c) into Vertex_Point2D
+!insert (vertex_d, point_d) into Vertex_Point2D
+!insert (vertex_e, point_e) into Vertex_Point2D
+!insert (vertex_f, point_f) into Vertex_Point2D
+!insert (vertex_g, point_g) into Vertex_Point2D
+!insert (vertex_h, point_h) into Vertex_Point2D
+!insert (vertex_i, point_i) into Vertex_Point2D
+!insert (vertex_j, point_j) into Vertex_Point2D
+!insert (vertex_k, point_k) into Vertex_Point2D
+!insert (vertex_l, point_l) into Vertex_Point2D
+!insert (vertex_m, point_m) into Vertex_Point2D
+!insert (vertex_n, point_n) into Vertex_Point2D
+!insert (vertex_o, point_o) into Vertex_Point2D
+!insert (vertex_p, point_p) into Vertex_Point2D
+!insert (vertex_q, point_q) into Vertex_Point2D
+!insert (vertex_r, point_r) into Vertex_Point2D
+!insert (vertex_s, point_s) into Vertex_Point2D
+!insert (vertex_t, point_t) into Vertex_Point2D
+!insert (vertex_u, point_u) into Vertex_Point2D
+!insert (vertex_v, point_v) into Vertex_Point2D
+!insert (vertex_w, point_w) into Vertex_Point2D
+!insert (vertex_x, point_x) into Vertex_Point2D
+
+
+-- create lines
+!create l_bh, l_hi, l_ij, l_jk, l_kd, l_db : Line           -- p1
+!create l_de, l_em, l_ml, l_lj : Line                       -- p2
+!create l_bc, l_cd : Line                                   -- p3
+!create l_ef, l_fu, l_ug, l_ga, l_ab : Line                 -- p4
+!create l_me, l_fr, l_rq, l_qp, l_po, l_on, l_nm : Line     -- p5
+!create l_rf, l_ut, l_ts, l_sr : Line                       -- p6
+!create l_ix, l_xw, l_wv, l_vg, l_gu, l_ji : Line           -- p7
+
+!insert (l_bh, vertex_b) into LineString_Vertex
+!insert (l_bh, vertex_h) into LineString_Vertex
+!insert (l_hi, vertex_h) into LineString_Vertex
+!insert (l_hi, vertex_i) into LineString_Vertex
+!insert (l_ij, vertex_i) into LineString_Vertex
+!insert (l_ij, vertex_j) into LineString_Vertex
+!insert (l_jk, vertex_j) into LineString_Vertex
+!insert (l_jk, vertex_k) into LineString_Vertex
+!insert (l_kd, vertex_k) into LineString_Vertex
+!insert (l_kd, vertex_d) into LineString_Vertex
+!insert (l_db, vertex_d) into LineString_Vertex
+!insert (l_db, vertex_b) into LineString_Vertex
+!insert (l_de, vertex_d) into LineString_Vertex
+!insert (l_de, vertex_e) into LineString_Vertex
+!insert (l_em, vertex_e) into LineString_Vertex
+!insert (l_em, vertex_m) into LineString_Vertex
+!insert (l_ml, vertex_m) into LineString_Vertex
+!insert (l_ml, vertex_l) into LineString_Vertex
+!insert (l_lj, vertex_l) into LineString_Vertex
+!insert (l_lj, vertex_j) into LineString_Vertex
+!insert (l_bc, vertex_b) into LineString_Vertex
+!insert (l_bc, vertex_c) into LineString_Vertex
+!insert (l_cd, vertex_c) into LineString_Vertex
+!insert (l_cd, vertex_d) into LineString_Vertex
+!insert (l_ef, vertex_e) into LineString_Vertex
+!insert (l_ef, vertex_f) into LineString_Vertex
+!insert (l_fu, vertex_f) into LineString_Vertex
+!insert (l_fu, vertex_u) into LineString_Vertex
+!insert (l_ug, vertex_u) into LineString_Vertex
+!insert (l_ug, vertex_g) into LineString_Vertex
+!insert (l_ga, vertex_g) into LineString_Vertex
+!insert (l_ga, vertex_a) into LineString_Vertex
+!insert (l_ab, vertex_a) into LineString_Vertex
+!insert (l_ab, vertex_b) into LineString_Vertex
+!insert (l_me, vertex_m) into LineString_Vertex
+!insert (l_me, vertex_e) into LineString_Vertex
+!insert (l_fr, vertex_f) into LineString_Vertex
+!insert (l_fr, vertex_r) into LineString_Vertex
+!insert (l_rq, vertex_r) into LineString_Vertex
+!insert (l_rq, vertex_q) into LineString_Vertex
+!insert (l_qp, vertex_q) into LineString_Vertex
+!insert (l_qp, vertex_p) into LineString_Vertex
+!insert (l_po, vertex_p) into LineString_Vertex
+!insert (l_po, vertex_o) into LineString_Vertex
+!insert (l_on, vertex_o) into LineString_Vertex
+!insert (l_on, vertex_n) into LineString_Vertex
+!insert (l_nm, vertex_n) into LineString_Vertex
+!insert (l_nm, vertex_m) into LineString_Vertex
+!insert (l_rf, vertex_r) into LineString_Vertex
+!insert (l_rf, vertex_f) into LineString_Vertex
+!insert (l_ut, vertex_u) into LineString_Vertex
+!insert (l_ut, vertex_t) into LineString_Vertex
+!insert (l_ts, vertex_t) into LineString_Vertex
+!insert (l_ts, vertex_s) into LineString_Vertex
+!insert (l_sr, vertex_s) into LineString_Vertex
+!insert (l_sr, vertex_r) into LineString_Vertex
+!insert (l_ix, vertex_i) into LineString_Vertex
+!insert (l_ix, vertex_x) into LineString_Vertex
+!insert (l_xw, vertex_x) into LineString_Vertex
+!insert (l_xw, vertex_w) into LineString_Vertex
+!insert (l_wv, vertex_w) into LineString_Vertex
+!insert (l_wv, vertex_v) into LineString_Vertex
+!insert (l_vg, vertex_v) into LineString_Vertex
+!insert (l_vg, vertex_g) into LineString_Vertex
+!insert (l_gu, vertex_g) into LineString_Vertex
+!insert (l_gu, vertex_u) into LineString_Vertex
+!insert (l_ji, vertex_j) into LineString_Vertex
+!insert (l_ji, vertex_i) into LineString_Vertex
+
+-- create linear rings
+!create lr1, lr2, lr3, lr4, lr5, lr6, lr7 : LinearRing
+
+!insert (lr1, l_bh) into LinearRing_Line
+!insert (lr1, l_hi) into LinearRing_Line
+!insert (lr1, l_ij) into LinearRing_Line
+!insert (lr1, l_jk) into LinearRing_Line
+!insert (lr1, l_kd) into LinearRing_Line
+!insert (lr1, l_db) into LinearRing_Line
+!insert (lr2, l_de) into LinearRing_Line
+!insert (lr2, l_em) into LinearRing_Line
+!insert (lr2, l_ml) into LinearRing_Line
+!insert (lr2, l_lj) into LinearRing_Line
+!insert (lr2, l_jk) into LinearRing_Line
+!insert (lr2, l_kd) into LinearRing_Line
+!insert (lr3, l_bc) into LinearRing_Line
+!insert (lr3, l_cd) into LinearRing_Line
+!insert (lr3, l_db) into LinearRing_Line
+!insert (lr4, l_ab) into LinearRing_Line
+!insert (lr4, l_bc) into LinearRing_Line
+!insert (lr4, l_cd) into LinearRing_Line
+!insert (lr4, l_de) into LinearRing_Line
+!insert (lr4, l_ef) into LinearRing_Line
+!insert (lr4, l_fu) into LinearRing_Line
+!insert (lr4, l_ug) into LinearRing_Line
+!insert (lr4, l_ga) into LinearRing_Line
+!insert (lr5, l_ef) into LinearRing_Line
+!insert (lr5, l_fr) into LinearRing_Line
+!insert (lr5, l_rq) into LinearRing_Line
+!insert (lr5, l_qp) into LinearRing_Line
+!insert (lr5, l_po) into LinearRing_Line
+!insert (lr5, l_on) into LinearRing_Line
+!insert (lr5, l_nm) into LinearRing_Line
+!insert (lr5, l_me) into LinearRing_Line
+!insert (lr6, l_fu) into LinearRing_Line
+!insert (lr6, l_ut) into LinearRing_Line
+!insert (lr6, l_ts) into LinearRing_Line
+!insert (lr6, l_sr) into LinearRing_Line
+!insert (lr6, l_rf) into LinearRing_Line
+!insert (lr7, l_ix) into LinearRing_Line
+!insert (lr7, l_xw) into LinearRing_Line
+!insert (lr7, l_wv) into LinearRing_Line
+!insert (lr7, l_vg) into LinearRing_Line
+!insert (lr7, l_gu) into LinearRing_Line
+!insert (lr7, l_ut) into LinearRing_Line
+!insert (lr7, l_ts) into LinearRing_Line
+!insert (lr7, l_sr) into LinearRing_Line
+!insert (lr7, l_rq) into LinearRing_Line
+!insert (lr7, l_qp) into LinearRing_Line
+!insert (lr7, l_po) into LinearRing_Line
+!insert (lr7, l_on) into LinearRing_Line
+!insert (lr7, l_nm) into LinearRing_Line
+!insert (lr7, l_ml) into LinearRing_Line
+!insert (lr7, l_lj) into LinearRing_Line
+!insert (lr7, l_ji) into LinearRing_Line
+
+-- create polygon surfaces
+!create ps1, ps2, ps3, ps4, ps5, ps6, ps7 : PolygonSurface
+
+-- create polygons
+!create p1, p2, p3, p4, p5, p6, p7 : Polygon
+
+!insert (p1, lr1) into Polygon_LinearRing
+!insert (p2, lr2) into Polygon_LinearRing
+!insert (p3, lr3) into Polygon_LinearRing
+!insert (p4, lr4) into Polygon_LinearRing
+!insert (p5, lr5) into Polygon_LinearRing
+!insert (p6, lr6) into Polygon_LinearRing
+!insert (p7, lr7) into Polygon_LinearRing
+!insert (p1, ps1) into Polygon_PolygonSurface
+!insert (p2, ps2) into Polygon_PolygonSurface
+!insert (p3, ps3) into Polygon_PolygonSurface
+!insert (p4, ps4) into Polygon_PolygonSurface
+!insert (p5, ps5) into Polygon_PolygonSurface
+!insert (p6, ps6) into Polygon_PolygonSurface
+!insert (p7, ps7) into Polygon_PolygonSurface
+
+
+-- create polygon coverage
+!create pc : PolygonCoverage
+
+!insert (pc, p1) into PolygonCoverage_Polygon
+!insert (pc, p2) into PolygonCoverage_Polygon
+!insert (pc, p3) into PolygonCoverage_Polygon
+!insert (pc, p4) into PolygonCoverage_Polygon
+!insert (pc, p5) into PolygonCoverage_Polygon
+!insert (pc, p6) into PolygonCoverage_Polygon
+!insert (pc, p7) into PolygonCoverage_Polygon
+
+
+-- line attributes
+--!set l_bh.polygonLeft  := 
+!set l_bh.polygonRight := p1
+--!set l_hi.polygonLeft  := 
+!set l_hi.polygonRight := p1
+!set l_ij.polygonLeft  := p7
+!set l_ij.polygonRight := p1
+!set l_jk.polygonLeft  := p2
+!set l_jk.polygonRight := p1
+!set l_kd.polygonLeft  := p2
+!set l_kd.polygonRight := p1
+!set l_db.polygonLeft  := p3
+!set l_db.polygonRight := p1
+!set l_de.polygonLeft  := p2
+!set l_de.polygonRight := p4
+!set l_em.polygonLeft  := p2
+!set l_em.polygonRight := p5
+!set l_ml.polygonLeft  := p2
+!set l_ml.polygonRight := p7
+!set l_lj.polygonLeft  := p2
+!set l_lj.polygonRight := p1
+!set l_bc.polygonLeft  := p3
+!set l_bc.polygonRight := p4
+!set l_cd.polygonLeft  := p3
+!set l_cd.polygonRight := p4
+!set l_ef.polygonLeft  := p5
+!set l_ef.polygonRight := p4
+!set l_fu.polygonLeft  := p6
+!set l_fu.polygonRight := p4
+!set l_ug.polygonLeft  := p7
+!set l_ug.polygonRight := p4
+--!set l_ga.polygonLeft  := 
+!set l_ga.polygonRight := p4
+--!set l_ab.polygonLeft  := 
+!set l_ab.polygonRight := p4
+!set l_me.polygonLeft  := p5
+!set l_me.polygonRight := p2
+!set l_fr.polygonLeft  := p5
+!set l_fr.polygonRight := p6
+!set l_rq.polygonLeft  := p5
+!set l_rq.polygonRight := p7
+!set l_qp.polygonLeft  := p5
+!set l_qp.polygonRight := p7
+!set l_po.polygonLeft  := p5
+!set l_po.polygonRight := p7
+!set l_on.polygonLeft  := p5
+!set l_on.polygonRight := p7
+!set l_nm.polygonLeft  := p5
+!set l_nm.polygonRight := p7
+!set l_rf.polygonLeft  := p6
+!set l_rf.polygonRight := p5
+!set l_ut.polygonLeft  := p6
+!set l_ut.polygonRight := p7
+!set l_ts.polygonLeft  := p6
+!set l_ts.polygonRight := p7
+!set l_sr.polygonLeft  := p6
+!set l_sr.polygonRight := p7
+--!set l_ix.polygonLeft  := 
+!set l_ix.polygonRight := p7
+--!set l_xw.polygonLeft  := 
+!set l_xw.polygonRight := p7
+--!set l_wv.polygonLeft  := 
+!set l_wv.polygonRight := p7
+--!set l_vg.polygonLeft  := 
+!set l_vg.polygonRight := p7
+!set l_gu.polygonLeft  := p4
+!set l_gu.polygonRight := p7
+!set l_ji.polygonLeft  := p1
+!set l_ji.polygonRight := p7
+
+!set l_bh.length := 5.66
+!set l_hi.length := 10.22
+!set l_ij.length := 2.21
+!set l_jk.length := 3.36
+!set l_kd.length := 2.76
+!set l_db.length := 7.04
+!set l_de.length := 6.60
+!set l_em.length := 1.37
+!set l_ml.length := 2.01
+!set l_lj.length := 3.11
+!set l_bc.length := 6.65
+!set l_cd.length := 3.99
+!set l_ef.length := 7.31
+!set l_fu.length := 3.64
+!set l_ug.length := 1.54
+!set l_ga.length := 11.56
+!set l_ab.length := 5.70
+!set l_me.length := 1.37
+!set l_fr.length := 12.06
+!set l_rq.length := 2.45
+!set l_qp.length := 3.72
+!set l_po.length := 4.12
+!set l_on.length := 2.32
+!set l_nm.length := 3.90
+!set l_rf.length := 12.06
+!set l_ut.length := 2.84
+!set l_ts.length := 8.43
+!set l_sr.length := 3.98
+!set l_ix.length := 17.57
+!set l_xw.length := 6.47
+!set l_wv.length := 5.73
+!set l_vg.length := 10.98
+!set l_gu.length := 1.54
+!set l_ji.length := 2.21
+
+!set l_ab.oclHelperDefinesCoverageBoundary := true
+!set l_bh.oclHelperDefinesCoverageBoundary := true
+!set l_hi.oclHelperDefinesCoverageBoundary := true
+!set l_ix.oclHelperDefinesCoverageBoundary := true
+!set l_xw.oclHelperDefinesCoverageBoundary := true
+!set l_wv.oclHelperDefinesCoverageBoundary := true
+!set l_vg.oclHelperDefinesCoverageBoundary := true
+!set l_ga.oclHelperDefinesCoverageBoundary := true
+!set l_ij.oclHelperDefinesCoverageBoundary := false
+!set l_jk.oclHelperDefinesCoverageBoundary := false
+!set l_kd.oclHelperDefinesCoverageBoundary := false
+!set l_db.oclHelperDefinesCoverageBoundary := false
+!set l_de.oclHelperDefinesCoverageBoundary := false
+!set l_em.oclHelperDefinesCoverageBoundary := false
+!set l_ml.oclHelperDefinesCoverageBoundary := false
+!set l_lj.oclHelperDefinesCoverageBoundary := false
+!set l_bc.oclHelperDefinesCoverageBoundary := false
+!set l_cd.oclHelperDefinesCoverageBoundary := false
+!set l_ef.oclHelperDefinesCoverageBoundary := false
+!set l_fu.oclHelperDefinesCoverageBoundary := false
+!set l_ug.oclHelperDefinesCoverageBoundary := false
+!set l_me.oclHelperDefinesCoverageBoundary := false
+!set l_fr.oclHelperDefinesCoverageBoundary := false
+!set l_rq.oclHelperDefinesCoverageBoundary := false
+!set l_qp.oclHelperDefinesCoverageBoundary := false
+!set l_po.oclHelperDefinesCoverageBoundary := false
+!set l_on.oclHelperDefinesCoverageBoundary := false
+!set l_nm.oclHelperDefinesCoverageBoundary := false
+!set l_rf.oclHelperDefinesCoverageBoundary := false
+!set l_ut.oclHelperDefinesCoverageBoundary := false
+!set l_ts.oclHelperDefinesCoverageBoundary := false
+!set l_sr.oclHelperDefinesCoverageBoundary := false
+!set l_gu.oclHelperDefinesCoverageBoundary := false
+!set l_ji.oclHelperDefinesCoverageBoundary := false
+
+-- polygon attributes
+!set p1.area := 45.62
+!set p2.area := 20.75
+!set p3.area := 13.01
+!set p4.area := 67.24
+!set p5.area := 50.68
+!set p6.area := 35.30
+!set p7.area := 95.53
+
+
+
+

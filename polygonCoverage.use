@@ -1,0 +1,203 @@
+model polygonCoverage
+
+-- ==============================================
+-- ==================  CLASSES ==================
+-- ==============================================
+
+class PolygonCoverage
+  attributes
+    
+end
+
+class Polygon
+  attributes
+    area : Real
+end
+
+class PolygonSurface 
+end
+
+abstract class LineString
+ attributes
+   length : Real
+end
+
+class LinearRing < LineString
+end
+
+class Line < LineString
+  attributes
+    polygonLeft : Polygon
+    polygonRight : Polygon
+    oclHelperDefinesCoverageBoundary : Boolean
+end
+
+class Vertex
+  attributes
+    height : Real
+  operations
+    moveTo(x: Real, y: Real)
+
+end
+
+class Point2D
+attributes
+  x : Real
+  y : Real
+end
+
+-- ===============================================
+-- ================  ASSOCIATIONS ================
+-- ===============================================
+
+association PolygonCoverage_Polygon between
+  PolygonCoverage[1..*] role coverage
+  Polygon[2..*] role polygons
+end
+
+association Polygon_PolygonSurface between
+  Polygon[1] role polygon
+  PolygonSurface[1] role surface
+end
+
+association Polygon_LinearRing between
+  Polygon[1] role polygon
+  LinearRing[1] role linearRing
+end
+
+association LineString_Vertex between
+  LineString[1..*] role lineStrings
+  Vertex[2..*] role vertices ordered
+end
+
+association LinearRing_Line between
+  LinearRing[1..2] role linearRings
+  Line[3..*]  role lines ordered
+
+end
+
+association Vertex_Point2D between
+  Vertex[1] role vertex
+  Point2D[1] role point2D 
+end
+
+
+-- ==============================================
+-- ============  ASSOCIATION CLASSES ============
+-- ==============================================
+-- Helper association classes for spatial operations.
+
+-- "overlap" is used according to the definition of the OGC:
+-- https://www.ogc.org/standards/sfa (v1.2.1, p. 38+39).
+associationclass oclHelperOverlappingPolygons between
+  Polygon[0..*] role p1
+  Polygon[0..*] role p2
+  operations
+    isEmpty() : Boolean =
+      p1->isEmpty() and p2->isEmpty()
+end
+
+-- "cross" is used according to the definition of the OGC:
+-- https://www.ogc.org/standards/sfa (v1.2.1, p. 37+38).
+associationclass oclHelperCrossingLines between
+  Line[0..*] role l1
+  Line[0..*] role l2
+  operations
+    isEmpty() : Boolean =
+      l1->isEmpty() and l2->isEmpty()
+end
+
+-- "contains" is used according to the definition of the OGC:
+-- https://www.ogc.org/standards/sfa (v1.2.1, p. 39).
+-- The point lies on the line but it is not start- or endpoint.
+associationclass oclHelperLineContainsVertex between
+  Line[0..*] role line
+  Vertex[0..*] role vertex
+  operations
+    isEmpty() : Boolean =
+      line->isEmpty() and vertex->isEmpty()
+end
+
+
+-- ======================================
+-- ============  CONSTRAINTS ============
+-- ======================================
+constraints
+
+context Point2D
+  -- Each point must have a unique coordinate.
+  -- This guarantees that there is only one height-value for each coordinate.
+  -- It also means that Polygons must use the same vertices,
+  -- instead of having one vertex per polygon with the same coordinate.
+  inv hasUniqueCoordinate:
+    -- Calculate a hash for each coordinate-pair according to
+    -- https://stackoverflow.com/a/682617. Then check for uniqueness.
+    Point2D.allInstances() -> isUnique( point | 
+      ((point.x + point.y)*(point.x + point.y + 1)/2) + point.y
+    )
+
+context Vertex
+  -- Each vertex must be part of all lines touching that vertex.
+  inv connectedToAllTouchingLines:
+    oclHelperLineContainsVertex->isEmpty()
+
+
+context Vertex::moveTo(x: Real, y: Real)
+  -- Vertex must have the given coordinates after the operation.
+  post hasNewPosition: self.point2D.x = x and self.point2D.y = y
+
+
+context Line
+  -- Lines can only have two vertices.
+  inv hasTwoVertices:
+    vertices->size()=2
+
+  -- Vertices must be different from each other.
+  inv verticesAreNotEqual:
+    vertices->first() <> vertices->last()
+
+  -- Length must be greater than zero.
+  inv lengthIsPositive:
+    self.length > 0
+
+  -- Line must be part of a polygon.
+  inv isPartOfPolygon:
+    -- Attribute 'polygonLeft' or 'polygonRight' needs to be defined for each line.
+    self.polygonLeft.oclIsTypeOf(Polygon) or self.polygonRight.oclIsTypeOf(Polygon)
+
+  -- Lines can not cross each other.
+  inv doesNotCrossLine:
+    -- Use the association class 'oclHelperCrossingLines' to simulate crossing lines.
+    -- It stores associations between lines that we consider to be crossing.
+    oclHelperCrossingLines[l1]->isEmpty() and oclHelperCrossingLines[l2]->isEmpty()
+
+
+context LinearRing
+  -- First and last vertex of a linear ring must be equal.
+  inv isClosed:
+    lines->first().vertices->first() = lines->last().vertices->last()
+
+
+context Polygon
+  -- Area must be greater than zero. This implies that the vertices don't lie in a straight line.
+  inv areaIsPositive:
+    self.area > 0
+
+  -- Polygons can not overlap.
+  inv doesNotOverlapPolygon:
+    -- Use the association class 'oclHelperOverlappingPolygons' to simulate overlaps.
+    -- It stores associations between polygons that we consider to have some sort of overlap
+    -- between each other.
+    oclHelperOverlappingPolygons[p1]->isEmpty() and oclHelperOverlappingPolygons[p2]->isEmpty()
+
+
+context PolygonCoverage
+  -- Only lines that define the outer boundary of the coverage are allowed to have
+  -- 'polygonLeft' or 'polygonRight' null. Gaps between polygons are not allowed.
+  inv hasNoHoles:
+    Line.allInstances() -> forAll(line | 
+      if not line.oclHelperDefinesCoverageBoundary 
+        then if line.polygonLeft.oclIsTypeOf(Polygon) and line.polygonRight.oclIsTypeOf(Polygon)
+          then true else false endif 
+      else true endif -- defines coverage boundary
+    )

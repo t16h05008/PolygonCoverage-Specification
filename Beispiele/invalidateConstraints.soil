@@ -1,0 +1,198 @@
+-- NOTE: The 'Reload current specification' button in the USE GUI 
+-- should be pressed between each execution of this script.
+-- There might be some strange behavior otherwise...
+
+-- Create valid polygon coverage
+-- See .\PolygonCoverageExample.png for a visual representation.
+open .\createPolygonCoverage.soil 
+
+-- Uncomment one of the following blocks to invalidate a specific constraint.
+
+-- =================================================================
+-- Invalidate Point2D::hasUniqueCoordinate
+-- Create a new Point with the same Coordinates as an existing one
+
+--!create point_a1 : Point2D
+--!set point_a1.x := 10.59
+--!set point_a1.y := 2.35
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Vertex::connectedToAllTouchingLines
+-- Move vertex t onto line fr
+-- See .\PolygonCoverageExample-connectedToAllTouchingLines.png for a visual
+-- representation.
+
+-- The constraint checks this association ONLY.
+--!vertexOnLine := new oclHelperLineContainsVertex('vertexOnLine') between (l_fr, vertex_t)
+
+-- But we could proceed to create a matching situation.
+--!set point_t.x := 21.61
+--!set point_t.y := 9.59
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Line::hasTwoVertices
+-- Create a line with 3 vertices
+
+--!create l_ixw : Line
+--!insert (l_ixw, vertex_i) into LineString_Vertex
+--!insert (l_ixw, vertex_x) into LineString_Vertex
+--!insert (l_ixw, vertex_w) into LineString_Vertex
+--!set l_ixw.length := 17.57 + 6.47
+--!set l_ixw.oclHelperDefinesCoverageBoundary := true
+--!set l_ixw.polygonRight := p7
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Line::verticesAreNotEqual
+-- Create a line with where start- and endpoint are the same vertex.
+
+--!create l_aa : Line
+--!insert (l_aa, vertex_a) into LineString_Vertex
+--!insert (l_aa, vertex_a) into LineString_Vertex
+-- We just want to check one constraint at a time
+--!set l_aa.length := 1 
+--!set l_aa.oclHelperDefinesCoverageBoundary := true
+--!set l_aa.polygonRight := p1
+-- This will also invalidate the constraint, that lines must have two vertices,
+-- because inserting the same vertex twice is not possible.
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Line::lengthIsPositive
+-- Set length of a line to zero
+
+--!set l_ab.length := 0
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Line::isPartOfPolygon
+-- Create a line that has neither 'polygonLeft' or 'polygonRight' set
+
+--!set l_ab.polygonRight := null
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Line::doesNotCrossLine
+-- Move a vertex inside another polygon
+-- See ..\PolygonCoverageExample-overlappingPolygons.png for a visual representation.
+
+--!set point_k.x := 17.31
+--!set point_k.y := 11.45
+--!crossing_lines1 := new oclHelperCrossingLines('crossing_lines1') between (l_de, l_jk)
+-- This also created overlapping polygons, but that constraint is checked below.
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate LinearRing::isClosed
+-- Modify a linear ring
+
+--!delete (lr1, l_db) from LinearRing_Line
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Polygon::areaIsPositive
+-- Move vertex to create a polygon where all vertices lie in a straight line
+-- See .\PolygonCoverageExample-polygonNoArea.png for a visual representation.
+
+-- The constraint checks this attribute ONLY.
+--!set p3.area := 0
+
+-- But we could proceed to create a matching situation.
+--!set point_c.x := 11.56
+--!set point_c.y := 9.77
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate Polygon::doesNotOverlapPolygon
+-- Move a vertex inside another polygon
+-- See .\PolygonCoverageExample-overlappingPolygons.png for a visual representation.
+
+-- The constraint checks this association ONLY.
+--!overlapping_polygons1 := new oclHelperOverlappingPolygons('overlapping_polygons1') between (p1, p4)
+
+-- But we could proceed to create a matching situation.
+--!set point_k.x := 17.31
+--!set point_k.y := 11.45
+
+-- This also created crossing lines, but that constraint is checked above.
+-- =================================================================
+
+
+-- =================================================================
+-- Invalidate PolygonCoverage::hasNoHoles
+-- Create a hole in the coverage
+-- See .\PolygonCoverageExample-holeInCoverage.png for a visual representation.
+
+-- The constraint in invalid with this line:
+--!set l_ef.polygonLeft := null
+
+-- But we could proceed to create a matching situation.
+--!create point_y : Point2D 
+--!set point_y.x := 15.94
+--!set point_y.y := 12.16
+
+--!create vertex_y : Vertex
+--!set vertex_y.height := 0.2
+--!insert (vertex_y, point_y) into Vertex_Point2D
+
+--!destroy l_de
+--!create l_dy, l_ye, l_fy : Line
+--!insert (l_dy, vertex_d) into LineString_Vertex
+--!insert (l_dy, vertex_y) into LineString_Vertex
+--!insert (l_ye, vertex_y) into LineString_Vertex
+--!insert (l_ye, vertex_e) into LineString_Vertex
+--!insert (l_fy, vertex_f) into LineString_Vertex
+--!insert (l_fy, vertex_y) into LineString_Vertex
+
+
+-- To insert the line on the correct position (and create a ring),
+-- all following lines need to be removed temporarily (there is no "insert at index")
+--!delete (lr2, l_em) from LinearRing_Line
+--!delete (lr2, l_ml) from LinearRing_Line
+--!delete (lr2, l_lj) from LinearRing_Line
+--!delete (lr2, l_jk) from LinearRing_Line
+--!delete (lr2, l_kd) from LinearRing_Line -- association is empty after this
+--!insert (lr2, l_dy) into LinearRing_Line -- new line
+--!insert (lr2, l_ye) into LinearRing_Line -- new line
+--!insert (lr2, l_em) into LinearRing_Line
+--!insert (lr2, l_ml) into LinearRing_Line
+--!insert (lr2, l_lj) into LinearRing_Line
+--!insert (lr2, l_jk) into LinearRing_Line
+--!insert (lr2, l_kd) into LinearRing_Line
+
+--!delete (lr4, l_ef) from LinearRing_Line
+--!delete (lr4, l_fu) from LinearRing_Line
+--!delete (lr4, l_ug) from LinearRing_Line
+--!delete (lr4, l_ga) from LinearRing_Line
+--!insert (lr4, l_dy) into LinearRing_Line -- new line
+--!insert (lr4, l_ef) into LinearRing_Line
+--!insert (lr4, l_fu) into LinearRing_Line
+--!insert (lr4, l_ug) into LinearRing_Line
+--!insert (lr4, l_ga) into LinearRing_Line
+
+--!set l_dy.polygonLeft := p2
+--!set l_dy.polygonRight := p4
+--!set l_ye.polygonLeft := p2
+--!set l_ye.polygonRight := null
+--!set l_fy.polygonLeft := p4
+--!set l_fy.polygonRight := null
+
+--!set l_dy.length := 1.93
+--!set l_ye.length := 4.67
+--!set l_fy.length := 5.37
+--!set l_dy.oclHelperDefinesCoverageBoundary := false
+--!set l_ye.oclHelperDefinesCoverageBoundary := false
+--!set l_fy.oclHelperDefinesCoverageBoundary := false
+--!set p4.area := 54.74
+-- =================================================================

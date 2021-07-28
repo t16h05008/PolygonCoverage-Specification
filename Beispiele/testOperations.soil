@@ -1,0 +1,24 @@
+-- Create valid polygon coverage
+-- See .\PolygonCoverageExample.png for a visual representation.
+open .\createPolygonCoverage.soil 
+
+-- Uncomment the following lines to test operations.
+
+-- =================================================================
+-- vertex::moveTo
+!openter vertex_a moveTo (10, 10) -- current position is (10.59, 2.35)
+!set vertex_a.point2D.x := 10
+!set vertex_a.point2D.y := 10
+-- Postcondition should be true
+!opexit 
+-- =================================================================
+
+-- =================================================================
+-- vertex::moveTo
+!openter vertex_b moveTo (10, 10) -- current position is (8.29, 7.57)
+!set vertex_b.point2D.x := 10
+!set vertex_b.point2D.y := 42
+-- Postcondition should be false.
+-- Position is (10, 42) but should be (10, 10)
+!opexit 
+-- =================================================================
