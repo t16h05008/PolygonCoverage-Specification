@@ -1,3 +1,5 @@
+-- Creates the polygon coverage shown in ./PolygonCoverageExample.png
+
 -- create points
 !create point_a : Point2D
 !create point_b : Point2D
@@ -467,7 +469,3 @@
 !set p5.area := 50.68
 !set p6.area := 35.30
 !set p7.area := 95.53
-
-
-
-

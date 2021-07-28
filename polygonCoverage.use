@@ -179,16 +179,19 @@ context LinearRing
 
 
 context Polygon
-  -- Area must be greater than zero. This implies that the vertices don't lie in a straight line.
+  -- Area must be greater than zero.
+  -- This implies that the vertices don't lie in a straight line.
   inv areaIsPositive:
     self.area > 0
 
   -- Polygons can not overlap.
   inv doesNotOverlapPolygon:
     -- Use the association class 'oclHelperOverlappingPolygons' to simulate overlaps.
-    -- It stores associations between polygons that we consider to have some sort of overlap
+    -- It stores associations between polygons that we consider
+    -- to have some sort of overlap.
     -- between each other.
-    oclHelperOverlappingPolygons[p1]->isEmpty() and oclHelperOverlappingPolygons[p2]->isEmpty()
+    oclHelperOverlappingPolygons[p1]->isEmpty() and 
+    oclHelperOverlappingPolygons[p2]->isEmpty()
 
 
 context PolygonCoverage
@@ -197,7 +200,8 @@ context PolygonCoverage
   inv hasNoHoles:
     Line.allInstances() -> forAll(line | 
       if not line.oclHelperDefinesCoverageBoundary 
-        then if line.polygonLeft.oclIsTypeOf(Polygon) and line.polygonRight.oclIsTypeOf(Polygon)
-          then true else false endif 
+      then 
+        if line.polygonLeft.oclIsTypeOf(Polygon) and line.polygonRight.oclIsTypeOf(Polygon)
+        then true else false endif 
       else true endif -- defines coverage boundary
     )

@@ -2,8 +2,6 @@
 -- See .\PolygonCoverageExample.png for a visual representation.
 open .\createPolygonCoverage.soil 
 
--- Uncomment the following lines to test operations.
-
 -- =================================================================
 -- vertex::moveTo
 !openter vertex_a moveTo (10, 10) -- current position is (10.59, 2.35)
