@@ -1,6 +1,6 @@
 -- NOTE: The 'Reload current specification' button in the USE GUI 
 -- should be pressed between each execution of this script.
--- There might be some strange behavior otherwise...
+-- There might be some strange behaviour otherwise...
 
 -- Create valid polygon coverage
 -- See .\PolygonCoverageExample.png for a visual representation.
